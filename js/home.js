@@ -2,7 +2,7 @@ const homeArray = [];
 
 for (let i = 0; i < 19; i++) {
 
-    homeArray.push("homeimg/home" + i + ".png");
+    homeArray.push("./homeimg/home" + i + ".png");
 
 }
 
