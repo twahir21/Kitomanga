@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="UTF-8">
+    <title> Responsive FAQ Accordion | CodingLab </title>
+    <link rel="stylesheet" href="css/faq.css">
+    <!-- Boxicons CDN Link -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+<body>
+  <div class="navigation">
+      <div class="logo"><img src="img/tall.png" alt="logo">
+          <h3>KITOMANGA</h3>
+      </div>
+  
+      <i class="fa-solid fa-bars" onclick="openNav()" id="open"></i> 
+  
+      <div class="menu">
+          <div class="nav-links hide" id="navLinks">
+          <i class="fa-solid fa-xmark" onclick="closeNav()"></i>
+              <ul>
+                  <li class="item1"> <a href="index.html">Home</a></li>
+                  <li class="item2"> <a href="about.html">About</a></li>
+                  <li class="item3"> <a href="faq.html">FAQ</a></li>
+                  <li class="item4"> <a href="shop.html">Shop</a></li>
+                  <li class="item5"> <a href="register.html">Cart<i class="fa-solid fa-cart-shopping"></i></a></li>
+                  <li class="item6"> <a href="contact.html">Contact</a></li>
+              </ul>
+          </div>
+      </div>
+  
+      <div class="nav">
+          <ul>
+              <li class="item1"> <a href="index.html">Home</a></li>
+              <li class="item2"> <a href="about.html">About</a></li>
+              <li class="item3"> <a href="faq.html">FAQ</a></li>
+              <li class="item4"> <a href="shop.html">Shop</a></li>
+              <li class="item5"> <a href="register.html">Cart<i class="fa-solid fa-cart-shopping"></i></a></li>
+              <li class="item6"> <a href="contact.html">Contact</a></li>
+          </ul>
+      </div>
+  </div>
+
+  <div class="accordion">
+    <div class="search">
+        <h1>FAQ</h1>
+        <h3>Frequently Asked Questions</h3>
+        <div class="input-button">
+            <input type="text" placeholder="Search any question...">
+            <div class="button">
+              <button>Search</button>
+            </div>
+        </div>
+    </div>
+    <div class="main">
+        <div class="image-box">
+            <h1>Have Questions?</h1>
+          <img src="img/mainImg.png" alt="">
+        </div>
+        <div class="accordion-text">
+        <ul class="faq-text">
+          <li>
+            <div class="question-arrow">
+              <span class="question">What do you mean by HTML & CSS</span>
+              <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nostrum, doloribus.</p>
+            <span class="line"></span>
+          </li>
+          <li>
+            <div class="question-arrow">
+              <span class="question">What do you mean by JavaScript</span>
+              <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <p>JavaScript is a text-based programming language used both on the client-side and server-side that allows you to make web pages interactive</p>
+            <span class="line"></span>
+          </li>
+          <li>
+            <div class="question-arrow">
+              <span class="question">From where you learned HTML & CSS</span>
+              <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Non, necessitatibus.</p>
+            <span class="line"></span>
+          </li>
+          <li>
+            <div class="question-arrow">
+              <span class="question">Which code editor do you use</span>
+              <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Rerum, labore.</p>
+            <span class="line"></span>
+          </li>
+          <li>
+            <div class="question-arrow">
+              <span class="question">Software you use for video editing</span>
+              <i class="fa-solid fa-arrow-down arrow"></i>
+            </div>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe, repudiandae!</p>
+            <span class="line"></span>
+          </li>
+        </ul>
+    </div>
+        
+    </div>
+    
+  </div>
+
+  <section class="footer">
+    <footer>
+        <div class="top-footer">
+            <div class="box1">
+                <div class="img">
+                    <img src="img/tall.png" alt="image_logo">
+                    <h3>Kitomanga</h3>
+                </div>
+                <h4>Contact</h4>
+                
+                <p><i class="fa-solid fa-location-dot"></i><b>Location: </b> Tanzania</p>
+                <p><i class="fa-solid fa-phone"></i><b>Phone: </b> +255 67 429 1587</p>
+                <p><i class="fa-solid fa-business-time"></i><b>Working hours: </b> 24/7 Support</p>
+                
+
+                <h4 class="follow">Follow Us</h4>
+            
+                    <a href="#"><i class="fa-brands fa-facebook fa-beat"></i></a>
+                    <a href="#"></a><i class="fa-brands fa-twitter fa-beat"></i></a>
+                    <a href="#"></a><i class="fa-brands fa-instagram fa-beat"></i></a>
+                    <a href="#"></a><i class="fa-brands fa-youtube fa-beat"></i></a>
+               
+            </div>
+            <div class="box2">
+                <h4>About</h4>
+                <div class="links">
+                    <a href="#"><i class="fa-solid fa-address-card"></i>About Us</a>
+                    <a href="#"><i class="fa-solid fa-unlock-keyhole"></i></i>Privacy Policy</a>
+                    <a href="#"><i class="fa-solid fa-truck"></i>Delivery Information</a>
+                    <a href="#"><i class="fa-solid fa-address-book"></i>Contact Us</a>
+                    <a href="#"><i class="fa-solid fa-clipboard"></i>Terms and Conditions</a>
+                </div>
+            </div>
+
+            <div class="box4">
+                <h4>Payments</h4>
+                <p id="secured">Secured Payments Gateways</p>
+                <div class="pay">
+                    <p><i class="fa-brands fa-paypal"></i>PayPal</p>
+                    <img src="img/Visa.png" alt="visa_img">
+                    <img src="img/MasterCard.png" alt="MasterCard_image">
+                    <img src="img/Maestro.png" alt="Maestro_image">
+
+                </div>
+            </div>
+            
+            <div class="box3">
+                <h4>My Account</h4>
+                <div class="links">
+                    <a href="#"><i class="fa-solid fa-key"></i>Sign In</a>
+                    <a href="#"><i class="fa-solid fa-cart-shopping"></i>View Cart</a>
+                    <a href="#"><i class="fa-solid fa-magnifying-glass"></i>Track My order</a>
+                    <a href="#"><i class="fa-solid fa-circle-question"></i>Help</a>
+                </div>
+            </div>
+        </div>
+        <div class="bottom-footer">
+            <h3>Copyright &copy; 2024. Kitomanga.com. All right reserved &rarr; By: Twahir Sudy</h3>
+        </div>
+    </footer>
+</section>
+
+  <script src="js/faq.js"></script>
+
+</body>
+</html>

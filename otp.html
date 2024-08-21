@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>OTP Verifier</title>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <style>
+        @import url('https://fonts.googleaapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+            font-family: "Poppins", sans-serif;
+            font-weight: 500;
+        }
+
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: url('img/otp.jpg') no-repeat center center fixed;
+            background-size: cover;
+        }
+
+        .otp-card {
+            text-align: center;
+            background-color: white;
+            border-radius: 20px;
+            padding: 3rem;
+            box-shadow: 0 10px 40px -20px black;
+            max-width: 500px;
+            width: 100%;
+        }
+
+        h1 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            color: blueviolet;
+        }
+
+        .otp-card-inputs {
+            margin: 30px 0;
+            display: grid;
+            gap: 15px;
+            justify-content: center;
+            grid-template-columns: repeat(6, auto);
+        }
+
+        .otp-card-inputs input {
+            width: 50px;
+            height: 50px;
+            font-size: 30px;
+            border-radius: 10px;
+            border: 2px solid black;
+            text-align: center;
+        }
+
+        .otp-card-inputs input::placeholder{
+            color: #dad4d4;
+        }
+
+        .otp-card-inputs input:focus {
+            outline: 2px solid blueviolet;
+            border-color: transparent;
+        }
+
+        .otp-card button {
+            background-color: blueviolet;
+            border: none;
+            padding: 15px 50px;
+            font-size: 18px;
+            color: white;
+            border-radius: 20px;
+            cursor: pointer;
+            margin-top: 15px;
+        }
+
+        .otp-card button:hover {
+            opacity: .9;
+        }
+
+        .otp-card button[disabled] {
+            opacity: .6;
+            cursor: default;
+        }
+
+        .otp-card p {
+            margin-top: 15px;
+            font-size: 14px;
+            color: grey;
+        }
+
+        .otp-card p a {
+            color: blueviolet;
+            text-decoration: none;
+        }
+
+        .otp-card p a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div class="otp-card">
+        <h1>OTP Verification</h1>
+        <p>OTP has been sent to *****@gmail.com</p>
+
+        <form id="verify-otp-form">
+            <div class="otp-card-inputs">
+                <input type="text" maxlength="1" placeholder="x" autofocus>
+                <input type="text" maxlength="1" placeholder="x">
+                <input type="text" maxlength="1"placeholder="x">
+                <input type="text" maxlength="1"placeholder="x">
+                <input type="text" maxlength="1"placeholder="x">
+                <input type="text" maxlength="1"placeholder="x">
+            </div>
+
+            <button type="submit" disabled>Verify OTP</button>
+        </form>
+
+        <p>Didn't get OTP? <a href="#">Resend Again</a></p>
+    </div>
+
+    <script>
+        const inputs = document.querySelectorAll('.otp-card-inputs input');
+        const button = document.querySelector('.otp-card button');
+
+        inputs.forEach((input, index) => {
+            input.onkeyup = (e) => {
+                const currentElement = e.target;
+                const nextElement = input.nextElementSibling;
+                const prevElement = input.previousElementSibling;
+                
+                const reg = /^[a-zA-Z0-9]+$/;
+
+                if (prevElement && e.keyCode === 8) { // Backspace key
+                    prevElement.focus();
+                    prevElement.value = '';
+                    button.setAttribute('disabled', true);
+                } else if (reg.test(currentElement.value)) {
+                    if (nextElement) {
+                        nextElement.focus();
+                    } else {
+                        button.removeAttribute('disabled');
+                    }
+                } else {
+                    currentElement.value = ''; // Remove invalid character
+                }
+            };
+        });
+        
+        document.getElementById('verify-otp-form').addEventListener('submit', async (event) => {
+    event.preventDefault();
+    const otpInputs = document.querySelectorAll('.otp-card-inputs input');
+    const otp = Array.from(otpInputs).map(input => input.value).join('');
+    const email = sessionStorage.getItem('userEmail'); // Retrieve email from sessionStorage
+
+    if (!email) {
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Email is missing. Please go back and try again.",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
+        return;
+    }
+
+    try {
+        const response = await fetch('/verify-otp', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ email, otp }),
+        });
+
+        const result = await response.text();
+        if (response.ok) {
+            Swal.fire({
+                title: "Success!",
+                text: result,
+                icon: "success"
+            }).then(() => {
+                window.location.href = './shop-in.html'; // Redirect to the appropriate page
+            });
+        } else {
+            Swal.fire({
+                icon: "error",
+                title: "Oops...",
+                text: result,
+                footer: '<a href="#">Why do I have this issue?</a>'
+            });
+        }
+    } catch (error) {
+        console.error('Error:', error);
+        Swal.fire({
+            icon: "error",
+            title: "Oops...",
+            text: "Failed to verify OTP",
+            footer: '<a href="#">Why do I have this issue?</a>'
+        });
+    }
+});
+
+
+    </script>
+</body>
+</html>

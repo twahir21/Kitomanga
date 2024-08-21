@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"> 
+    <title>Shop | Kitomanga</title>
+    <link rel="stylesheet" href="./css/shop.css">
+    <script defer src="./js/shop.js"></script>
+</head>
+<body>
+
+    <div class="navigation">
+        <div class="logo"><img src="img/tall.png" alt="logo">
+            <h3>KITOMANGA</h3>
+        </div>
+    
+        <i class="fa-solid fa-bars" onclick="openNav()" id="open"></i> 
+    
+        <div class="menu">
+            <div class="nav-links hide" id="navLinks">
+            <i class="fa-solid fa-xmark" onclick="closeNav()"></i>
+                <ul>
+                    <li class="item1"> <a href="index.html">Home</a></li>
+                    <li class="item2"> <a href="#">New Arrival</a></li>
+                    <li class="item3"> <a href="#">Categories</a></li>
+                    <li class="item4"> <a href="#">Best Sellers</a></li>
+                    <li class="item5"> <a href="register.html">Cart<i class="fa-solid fa-cart-shopping"></i></a></li>
+                    <li class="item6"><button class="login" onclick="login()">Login</button></li>
+                </ul>
+            </div>
+        </div>
+    
+        <div class="nav">
+            <ul>
+                <li class="item1"> <a href="index.html">Home</a></li>
+                <li class="item2"> <a href="contact.html">Contact</a></li>
+                <li class="item3"> <a href="#">Blogs</a></li>
+                <li class="item4"> <a href="#">Shop</a></li>
+                <li class="item5"> <a href="register.html">Cart<i class="fa-solid fa-cart-shopping"></i></a></li>
+                <li class="item6"><button class="login" onclick="login()">Login</button></li>
+            </ul>
+        </div>
+    </div>
+    
+    <div class="shop-container">
+        <!-- Example Product Card -->
+        <div class="product-card" data-product-id="1">
+            <img src="img/computer1.jpg" alt="Product 1">
+            <h4>Hp</h4>
+            <h3>Product 1</h3>
+            <div class="rating">
+                <span class="star" data-value="1">&#9733;</span>
+                <span class="star" data-value="2">&#9733;</span>
+                <span class="star" data-value="3">&#9733;</span>
+                <span class="star" data-value="4">&#9733;</span>
+                <span class="star" data-value="5">&#9733;</span>
+                <span class="rating-count">(20)</span>
+            </div>
+            <div class="price">
+                $<span class="price-value">49.99</span>
+                <!-- <button class="edit-price">Edit</button> -->
+                 <div class="cart"><i class="fa-solid fa-cart-shopping"></i></div>
+            </div>
+        </div>
+        <!-- Add more product cards here -->
+    </div>
+</body>
+</html>
